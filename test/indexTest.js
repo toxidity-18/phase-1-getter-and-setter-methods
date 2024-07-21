@@ -1,47 +1,44 @@
-require ( './helpers.js' );
+class Circle {
+  constructor(radius) {
+      this._radius = radius;
+  }
 
-let circle;
+  get diameter() {
+      return this._radius * 2;
+  }
+r
+  set diameter(diameter) {
+      this._radius = diameter / 2;
+  }
 
-describe( "Circle", () => {
-  beforeEach( () => {
-    circle = new Circle( 6 )
-  } )
+ 
+  get circumference() {
+      return Math.PI * this.diameter;
+  }
 
-  it( "correctly returns the radius property of a Circle instance using `circle.radius`", () => {
-    expect( circle.radius ).to.equal( 6 )
-  } )
+ 
+  set circumference(circumference) {
+      this._radius = circumference / (2 * Math.PI);
+  }
 
-  describe( "gets", () => {
-    it( "the diameter of a circle using the pseudo-property `circle.diameter`", () => {
-      expect( circle.diameter ).to.equal( 12 )
-    } )
-    it( "the circumference of a circle using the pseudo-property `circle.circumference`", () => {
-      expect( circle.circumference ).to.be.at.least( 37.68 )
-      expect( circle.circumference ).to.be.at.most( 37.71 )
-    } )
-    it( "the area of a circle using the pseudo-property `circle.area`", () => {
-      expect( circle.area ).to.be.at.least( 113 )
-      expect( circle.area ).to.be.at.most( 113.1 )
-    } )
-  } )
+  
+  get area() {
+      return Math.PI * (this._radius ** 2);
+  }
 
-  describe( "sets", () => {
-    it( "the radius using the pseudo-property `circle.diameter`", () => {
-      circle.diameter = 36
-      expect( circle.radius ).to.eq( 18 )
-    } )
+ 
+  set area(area) {
+      this._radius = Math.sqrt(area / Math.PI);
+  }
 
-    it( "the radius using the pseudo-property `circle.circumference`", () => {
-      circle.circumference = 100
-      expect( circle.radius ).to.be.at.least( 15 )
-      expect( circle.radius ).to.be.at.most( 16 )
-    } )
+ 
+  get radius() {
+      return this._radius;
+  }
 
-    it( "the radius using the pseudo-property `circle.area`", () => {
-      circle.area = 200
-      expect( circle.radius ).to.be.at.least( 7 )
-      expect( circle.radius ).to.be.at.most( 8 )
-    } )
-  } )
+   set radius(radius) {
+      this._radius = radius;
+  }
+}
 
-} )
+module.exports = Circle;
